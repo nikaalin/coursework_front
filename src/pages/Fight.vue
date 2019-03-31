@@ -1,17 +1,17 @@
 <template>
-  <div id="fightPage" class="container">
+  <div id="fightPage" class="container-fluid">
     <AppHeader></AppHeader>
     <div id="main" class="row">
-      <div id="fight" class="col-8 p-4 m-4 border border-success text-center  rounded justify-content-center align-items-center">
+      <div id="fight" class="col-lg-8 col-11 p-4  mx-auto mt-2 border border-success text-center  rounded justify-content-center align-items-center">
         <div id="fightState" class="row pb-3">
-          <div v-for="beast in beasts" v-if="beast.isFighter == true" class="col-4 m-auto border border-success text-center rounded d-flex
+          <div v-for="beast in beasts" v-if="beast.isFighter == true" class="col-lg-4 col-8  mb-lg-0 mb-1 mx-auto border border-success text-center rounded d-flex
                  flex-column justify-content-center align-items-center">
             {{beast.name}}
             <div class="progress mb-2" style="width: 100%">
               <div class="progress-bar bg-success" role="progressbar" :style="{width: beast.hp + '%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
           </div>
-          <div v-for="beast in enemyBeasts" v-if="beast.isFighter == true" class="col-4 m-auto border border-danger text-center rounded d-flex
+          <div v-for="beast in enemyBeasts" v-if="beast.isFighter == true" class="col-lg-4 col-8 mt-lg-0 mt-1 mx-auto border border-danger text-center rounded d-flex
                  flex-column justify-content-center align-items-center">
             {{beast.name}}
             <div class="progress mb-2" style="width: 100%">
@@ -19,12 +19,14 @@
             </div>
           </div>
         </div>
-        <div id="battleField">
-          <div id="chat">
-            <div v-for="msg in messages" :class="[msg.isGood ? 'text-success' : 'text-danger']">
+        <div id="battleField" class="my_table_fight" >
+          <table id="chat">
+            <tbody>
+            <tr v-for="msg in messages" :class="[msg.isGood ? 'text-success' : 'text-danger']">
               {{msg.text}}
-            </div>
-          </div>
+            </tr>
+            </tbody>
+          </table>
           <button @click="showModalSave = true">test end 2</button>
         </div>
       </div>
@@ -90,6 +92,32 @@ export default {
         {type: 'dragon', name: 'Drogo', level: '14', hp: 100, isFighter: true, isAlive: true}
       ],
       messages: [
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
+        {text: 'Вас покусали комары. - 100хп', isGood: false},
         {text: 'Вас покусали комары. - 100хп', isGood: false}
       ],
       user: {name: 'Dany', level: 10, exp: 1400, money: 50},

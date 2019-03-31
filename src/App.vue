@@ -6,10 +6,11 @@
 
 <script> /*eslint-disable */
   import 'bootstrap/dist/css/bootstrap.css'
-  import 'bootstrap-vue/dist/bootstrap-vue.css'
+  import '../node_modules/bootstrap-vue/dist/bootstrap-vue.css'
+  import '../node_modules/popper.js/dist/esm/popper'
 
-  import navbar from 'vue-strap/src/Navbar'
-  import dropdown from 'vue-strap/src/Dropdown'
+  //import navbar from 'vue-strap/src/Navbar'
+  //import dropdown from 'vue-strap/src/Dropdown'
   import Vue from 'vue'
   import axios from 'axios'
   import VueAxios from 'vue-axios'
@@ -19,11 +20,8 @@ import BootstrapVue from 'bootstrap-vue'
 Vue.use(BootstrapVue)
   Vue.use(VueAxios, axios)
 export default {
-  name: 'App',
-  components:{
-    'navbar': navbar,
-    'dropdown': dropdown
-  }
+  name: 'App'
+
 }
 </script>
 

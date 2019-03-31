@@ -25,6 +25,32 @@
 /*h3, h4, h1 {*/
   /*margin: 0;*/
 /*}*/
+
+html, body, #startPage, .container
+{
+  height: 100%;
+}
+
+#string :hover
+{
+  display: block;
+}
+
+.my_table
+{
+  margin-top: 20px;
+  overflow: scroll;
+  height: 70vh !important;
+  background-color: white;
+}
+.my_table_fight
+{
+  margin-top: 20px;
+  overflow: scroll;
+  height: 50vh !important;
+  background-color: white;
+}
+
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -71,4 +97,12 @@
 .modal-leave-active .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+@media (max-width: 500px) {
+  h1
+  {
+    font-size: 43px !important;
+  }
+
 }

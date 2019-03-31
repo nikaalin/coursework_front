@@ -14,6 +14,8 @@ import './static/css/tooltip.css'
 import AppFooter from './components/Footer'
 import AppHeader from './components/Header'
 import AppNavigation from './components/Navigation'
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 // import VueResource from 'vue-resource'
 
 // Vue.use(VTooltip)

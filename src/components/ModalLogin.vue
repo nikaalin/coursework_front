@@ -39,10 +39,10 @@
 
 <script>/* eslint-disable*/
 import axios from 'axios'
-import ToggleButton from 'vue-strap/src/ToggleButton'
+
 export default {
   name: 'ModalLogin',
-  components: {ToggleButton},
+
   data () {
     return {
       login: '222',

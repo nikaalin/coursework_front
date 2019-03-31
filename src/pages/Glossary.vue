@@ -1,9 +1,9 @@
 <template>
-  <div id="gl">
+  <div id="gl" >
     <AppHeader></AppHeader>
-    <b-tabs content-class="mt-3" v-model="myIndex" @input="change()">
-      <b-tab title="Существа">
-        <GlossaryBody></GlossaryBody>
+    <b-tabs content-class="mt-3" v-model="myIndex" @input="change()" style="height: 100%">
+      <b-tab title="Существа" >
+        <GlossaryBody ></GlossaryBody>
       </b-tab>
       <b-tab title="Локации">
       </b-tab>
