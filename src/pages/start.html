@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <title>Welcome!</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+    <script type="module" src="../../static/js/chat.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/loginModal.css">
+
+</head>
+<body>
+<div id="startPage" class="content-center ">
+    <div class="container   justify-content-center align-items-center d-flex flex-column">
+        <div id="header" class="row">
+            <div class="col-12 text-center bg-light text-black-50 display-1 flex-row d-flex">
+                <h1 class="display-1 text-success">Gam</h1>
+                <h1 class="display-1 text-danger">e of Beasts</h1>
+
+            </div>
+        </div>
+        <div id="main" class="row mt-5 ">
+            <div id="auth"
+                 class="col-4 m-auto border border-success text-center rounded d-flex flex-column justify-content-center align-items-center">
+                <h3 slot="header " class="text-black-50">Вход</h3>
+                <div v-for="item in socialNetworks" class="text-black-50 btn btn-success mt-0,5 mb-1 "
+                     style="width: 50%" @click="showModal = true; currentNetwork = item">{{item}}
+                </div>
+
+            </div>
+            <div id="description" class="col-7 bg-light rounded text-black-50">
+                <h5>Тут все очень классно, совсем без костылей, все работает, хороший курсач, надо принять</h5>
+                <div>{{authResult}}</div>
+            </div>
+        </div>
+    </div>
+
+    <modal v-if="showModal" @close="showModal = false">
+        <h3 slot="header">Вход</h3>
+    </modal>
+</div>
+
+</body>
+<script>
+    new Vue({
+        el: '#startPage',
+        data: {
+            socialNetworks: ['VK', 'Facebook'],
+            currentNetwork: "",
+            showModal: false,
+            authResult: null
+        }
+    })
+</script>
+
+<script type="text/x-template" id="modal-template">
+    <transition name="modal">
+        <div class="modal-mask">
+            <div class="modal-wrapper">
+                <div class="modal-container">
+
+                    <div class="modal-header">
+                        <slot name="header">
+                            default header
+                        </slot>
+                    </div>
+
+                    <div class="modal-body">
+                        <slot name="body">
+                            <div><label>Логин <input v-model="login"> </label></div>
+                            <div><label>Пароль <input v-model="password"> </label></div>
+                        </slot>
+                    </div>
+                    <div class="modal-footer">
+                        <slot name="footer">
+                            <button class="btn btn-success" @click="$emit('close'); checkUser()">
+                                OK
+                            </button>
+                        </slot>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </transition>
+</script>
+
+
+</html>
