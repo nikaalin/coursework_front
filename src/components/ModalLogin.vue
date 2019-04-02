@@ -23,11 +23,11 @@
               <slot name="button">
               </slot>
               <!--<slot name="okButton" class="btn btn-success" @click="checkUser()">-->
-                <!--OK-->
+              <!--OK-->
               <!--</slot>-->
-              <button class="btn btn-success" @click="checkUser()">
+              <slot name="okButton" class="btn btn-success" @click="checkUser()">
                 OK
-              </button>
+              </slot>
               {{authResult}}
             </slot>
           </div>
@@ -52,30 +52,31 @@ export default {
     }
   },
   methods: {
-    checkUser () {
-      axios
-        //обращаемся к серверу
-        .post('http://localhost:8088/game_over_war_exploded/auth',{
-          login: this.login, password: this.password
-        })
-        .setHeader('Origin','')
-        .then(response => {
-          // достаем результат проверки
-          this.authResult = response.data
-          if (this.authResult === true)
-            location.href = "/map"
-          //сообщение если с данными пользователя что-то не так(получаем с сервера)
-          else
-            this.errMsg = response.data
-
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    },
-    registrUser(){
-
-    }
+    // checkUser () {
+    //   axios
+    //   //обращаемся к серверу
+    //     .get('/login', {
+    //       login: this.login, password: this.password
+    //     })
+    //     .setHeader('Origin', '')
+    //     .then(response => {
+    //       // достаем результат проверки
+    //       this.authResult = response.data
+    //       if (this.authResult === true) {
+    //         location.href = '/map'
+    //       }//сообщение если с данными пользователя что-то не так(получаем с сервера)
+    //       else {
+    //         this.errMsg = response.data
+    //       }
+    //
+    //     })
+    //     .catch(error => {
+    //       console.log(error)
+    //     })
+    // },
+    // registrUser () {
+    //
+    // }
   }
 }
 </script>

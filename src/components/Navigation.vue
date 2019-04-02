@@ -16,12 +16,11 @@
   <!--</nav>-->
   <div class="btn-group my-auto mx-auto  ">
     <button type="button" class="btn  dropdown-toggle btn-danger w-50" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      &nbsp&nbsp&nbsp
     </button>
     <div class="dropdown-menu">
       <a class="dropdown-item" href = "/map">Карта</a>
       <a class="dropdown-item" href = "/account">Герой</a>
-      <a class="dropdown-item" href = "/craft">Кузница</a>
+      <!--<a class="dropdown-item" href = "/craft">Кузница</a>-->
       <a class="dropdown-item" href = "/gl">Глоссарий</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href = "/login">Выход</a>

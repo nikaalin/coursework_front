@@ -25,16 +25,25 @@
 
     <ModalLogin v-if="showModalLogin" @close="showModalLogin = false">
       <h3 slot="header"><p class="text-success">Вход</p>{{currentNetwork}}</h3>
-      <button slot="button" @click="showModalLogin = false; showModalRegistr = true" class="btn btn-success">Регистрация</button>
-      <!--<button slot="okButton" class="btn btn-success" >-->
-        <!--OK-->
-      <!--</button>-->
+      <button slot="button" @click="showModalLogin = false; showModalRegistr = true" class="btn btn-success">
+        Регистрация
+      </button>
+      <button slot="okButton" class="btn btn-success" @click="checkUser()">
+      OK
+      </button>
     </ModalLogin>
     <ModalLogin v-if="showModalRegistr" @close="showModalRegistr = false">
       <h3 slot="header"><p class="text-success">Регистрация</p>{{currentNetwork}}</h3>
-      <button slot="button" @click="showModalRegistr = false; showModalLogin = true" class="btn btn-success">Вход</button>
+      <div slot="body">
+        <label>Nickname
+          <input type="text">
+        </label>
+
+      </div>
+      <button slot="button" @click="showModalRegistr = false; showModalLogin = true" class="btn btn-success">Вход
+      </button>
       <!--<button slot="okButton" class="btn btn-success">-->
-        <!--OK-->
+      <!--OK-->
       <!--</button>-->
     </ModalLogin>
   </div>
@@ -43,20 +52,44 @@
 <script>/* eslint-disable*/
 
 import ModalLogin from '@/components/ModalLogin'
+import axios from 'axios'
+
 export default {
-        name: "Login",
+  name: 'Login',
   components: {ModalLogin},
   // el: '#startPage',
-        data () {
-          return {
-            socialNetworks: ['VK', 'Facebook'],
-            currentNetwork: '',
-            showModalLogin: false,
-            showModalRegistr: false
-          }
-        },
-    methods:{}
+  data () {
+    return {
+      socialNetworks: ['vk', 'facebook'],
+      currentNetwork: '',
+      showModalLogin: false,
+      showModalRegistr: false
     }
+  },
+  methods: {
+    checkUser () {
+      let url = '/login/'+ this.currentNetwork
+      axios
+      //обращаемся к серверу
+        .get(url)
+        .then(result => {
+          console.log(result)
+          // // достаем результат проверки
+          // this.authResult = response.data
+          // if (this.authResult === true) {
+          //   location.href = '/map'
+          // }//сообщение если с данными пользователя что-то не так(получаем с сервера)
+          // else {
+          //   this.errMsg = response.data
+          // }
+
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+  }
+}
 
 </script>
 
