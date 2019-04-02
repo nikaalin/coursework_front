@@ -18,7 +18,7 @@
 
         </div>
         <div id="description" class="col-7 bg-light rounded text-black-50">
-          <h5>Тут все очень классно, совсем без костылей, все работает, хороший курсач, надо принять</h5>
+          <h5>Если не пытаться входить, выглядит даже хорошо, минималистичненько.</h5>
         </div>
       </div>
     </div>
@@ -34,6 +34,7 @@
     </ModalLogin>
     <ModalLogin v-if="showModalRegistr" @close="showModalRegistr = false">
       <h3 slot="header"><p class="text-success">Регистрация</p>{{currentNetwork}}</h3>
+
       <div slot="body">
         <label>Nickname
           <input type="text">
@@ -42,9 +43,9 @@
       </div>
       <button slot="button" @click="showModalRegistr = false; showModalLogin = true" class="btn btn-success">Вход
       </button>
-      <!--<button slot="okButton" class="btn btn-success">-->
-      <!--OK-->
-      <!--</button>-->
+      <button slot="okButton" class="btn btn-success" @click="registrUser()">
+        OK
+      </button>
     </ModalLogin>
   </div>
 </template>
@@ -83,6 +84,18 @@ export default {
           //   this.errMsg = response.data
           // }
 
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    registrUser () {
+      let url = '/registr/'+ this.currentNetwork
+      axios
+      //обращаемся к серверу
+        .get(url)
+        .then(result => {
+          console.log(result)
         })
         .catch(error => {
           console.log(error)

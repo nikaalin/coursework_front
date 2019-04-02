@@ -1,20 +1,19 @@
 <template>
-    <div class="block">
-        <footer class="block">
-            <p>
-                <a href="http://en.ifmo.ru/en/"  target="_blank">
-                    <img src="../static/img/itmo.png" width="120" height="60" border="0"/>
-                </a>
-            </p>
-        </footer>
+  <div class="row justify-content-center">
 
-    </div>
+    <a href="http://en.ifmo.ru/en/" target="_blank">
+      <img title="Сюда лучше не ходить" src="../static/img/itmo.png" style="background: #005cbf" width="120"
+           height="60" border="0"/>
+    </a>
+
+
+  </div>
 </template>
 
 <script>
-    export default {
-        name: 'Footer'
-    }
+  export default {
+    name: 'Footer'
+  }
 </script>
 
 <style scoped>
