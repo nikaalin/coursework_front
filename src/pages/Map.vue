@@ -25,11 +25,11 @@
       </div>
       <div slot="footer" class="row p-2">
         <div class="col p-0">
-          <button class="btn btn-warning text-white mb-1" @click="startBattle('run')">Убежать<span style="visibility: hidden">щя</span></button>
-          <button class="btn btn-success mt-1" @click="startBattle('pay')">Откупиться</button>
+          <button class="btn btn-warning text-white mb-1 text-center" @click="run">&nbsp;&nbsp;Убежать&nbsp;&nbsp;&nbsp;<span style="visibility: hidden"><br/> за {{cost}}</span></button>
+          <button class="btn btn-success mt-1 text-center" :class="{'disable': disablePay}" @click="pay">Откупиться<br/> за {{cost}}</button>
         </div>
         <!--<div class="col my-auto">-->
-        <button class="btn btn-danger " @click="startBattle('battle')">В БОЙ!</button>
+        <button class="btn btn-danger text-center" @click="fight">В БОЙ!</button>
         <!--</div>-->
       </div>
 
@@ -49,6 +49,7 @@
 <script> /* eslint-disable*/
 import DefaultModal from '@/components/DefaultModal'
 import axios from 'axios'
+import {RouteRecord as redirect} from 'vue-router'
 
 export default {
   name: 'Map',
@@ -58,6 +59,8 @@ export default {
       enemies: [{name: 'Базовая', type: 'ЭВМ', lvl: 666}],
       showModal: false,
       showSpinner: false,
+      cost: null,
+      disablePay: false
     }
   },
   mounted: function () {
@@ -67,6 +70,26 @@ export default {
     // }
   },
   methods: {
+
+   run: function(){
+      if (Math.random()<0.5){
+        showModal=false
+      }
+      else this.fight()
+    },
+    pay: function(){
+      this.showModal = false
+      axios
+        .get('/fight/pay/'+this.cost)
+    },
+    fight: function(){
+      location.href = '/fight'
+      axios
+        .get('/fight')
+    },
+    getCost: function(){
+      this.cost = Math.round(Math.random()*100)
+    },
     startBattle: function(action){
       let url = '/fight/'+action
       axios
@@ -76,7 +99,10 @@ export default {
 
         })
     },
+
     eventCanvas: function (e) {
+      this.getCost()
+      this.disablePay = (this.cost>header.user.money)
       this.showSpinner = true
       let location = this.what_location(e)
       let url = '/map/' + location
@@ -357,6 +383,7 @@ export default {
         }
       }
     }
+
 
   }
 }

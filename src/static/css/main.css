@@ -31,7 +31,7 @@ html, body, #startPage, .container
   height: 100%;
 }
 
-#string :hover
+.string :hover
 {
   display: block;
 }
