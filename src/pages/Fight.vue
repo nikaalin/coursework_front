@@ -95,6 +95,9 @@ export default {
         {type: 'dragon', name: 'Drogo', level: '14', hp: 100, isFighter: true, isAlive: true}
       ],
       messages: [
+        {text: null, isGood: null}
+      ],
+      allMessages: [
         {text: 'Вас покусали комары. - 100хп', isGood: false},
         {text: 'Вас покусали комары. - 100хп', isGood: false},
         {text: 'Вас покусали комары. - 100хп', isGood: false}
@@ -108,6 +111,15 @@ export default {
     }
   },
   methods: {
+    showMessages () {
+      this.allMessages.forEach(
+        function (item, i, arr) {
+          setTimeout(function () {
+            this.messages.push(item)
+          }, 2000)
+        }
+      )
+    },
     showEnd (t) {
       if (t) { this.showModalEnd = true }
     },
@@ -130,6 +142,7 @@ export default {
           console.log(result)
         })
     }
+
   }
 }
 </script>
